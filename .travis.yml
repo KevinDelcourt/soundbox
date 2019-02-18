@@ -5,6 +5,7 @@ node_js:
 cache:
   - npm
 before_install:
+  - curl -u z:a ftp://ftp.online.net
   - curl -u ${FTP_USER}:${FTP_PSWD} ftp.online.net
   - cd client
 script:
