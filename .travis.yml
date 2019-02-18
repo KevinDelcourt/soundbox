@@ -11,6 +11,7 @@ script:
   - yarn start & wait-on http://localhost:3000
   - yarn build
 deploy:
+  skip_cleanup: true
   provider: script
   script: bash ftp.sh
   on:
