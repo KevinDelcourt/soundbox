@@ -5,7 +5,7 @@ node_js:
 cache:
   - npm
 before_install:
-  - curl -u abc:${FTP_PSWD} ftp.online.net
+  - curl -u ${FTP_USER}%40kevin-delcourt.net:${FTP_PSWD} ftp.online.net
   - cd client
 script:
   - npm install wait-on -g
@@ -13,4 +13,4 @@ script:
   - yarn build
 after_success:
   - cd build
-  - find * -type f -exec curl -u ${FTP_USER}:${FTP_PSWD} --ftp-create-dirs -T {} ftp.online.net/soundbox/{} \;
+  - find * -type f -exec curl -u ${FTP_USER}%40kevin-delcourt.net:${FTP_PSWD} --ftp-create-dirs -T {} ftp.online.net/soundbox/{} \;
