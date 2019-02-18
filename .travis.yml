@@ -12,6 +12,6 @@ script:
   - yarn build
 deploy:
   provider: script
-  script: bash client/ftp.sh
+  script: bash ftp.sh
   on:
     branch: master
