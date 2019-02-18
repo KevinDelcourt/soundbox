@@ -11,5 +11,4 @@ script:
   - yarn start & wait-on http://localhost:3000
   - yarn build
 after_success:
-  - cd build
-  - bash ../ftp.sh
+  - node deploy
