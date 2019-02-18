@@ -10,5 +10,8 @@ script:
   - npm install wait-on -g
   - yarn start & wait-on http://localhost:3000
   - yarn build
-after_success:
-  - node deploy
+deploy:
+  provider: script
+  script: bash client/ftp.sh
+  on:
+    branch: master
