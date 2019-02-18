@@ -9,3 +9,7 @@ before_install:
 script:
   - npm install wait-on -g
   - yarn start & wait-on http://localhost:3000
+  - yarn build
+after_success:
+  - cd build
+  - find * -type f -exec curl -u ${FTP_USER}:${FTP_PSWD} --ftp-create-dirs -T {} ftp.online.net/soundbox/{} \;

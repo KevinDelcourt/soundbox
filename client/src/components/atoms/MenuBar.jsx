@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap'
 
 export default class MenuBar extends Component {
-    state = {isOpen: true}
+    state = {isOpen: false}
 
     toggle = () => this.setState({isOpen: !this.state.isOpen})
 
