@@ -5,8 +5,8 @@ node_js:
 cache:
   - npm
 before_install:
-  - "curl -u ${FTP_USER}\@kevin-delcourt.net:${FTP_PSWD} ftp.online.net"
   - cd client
+  - bash ftp.sh
 script:
   - npm install wait-on -g
   - yarn start & wait-on http://localhost:3000
