@@ -1,1 +1,1 @@
-curl -T package.json -u ${FTP_USER}\@kevin-delcourt.net:${FTP_PSWD} ftp.online.net/package.json
+find * -type f -exec curl -u ${FTP_USER}\@kevin-delcourt.net:${FTP_PSWD} --ftp-create-dirs -T {} ftp.online.net/soundbox/{} \;
