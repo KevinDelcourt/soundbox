@@ -2,8 +2,8 @@ const FtpDeploy = require('ftp-deploy');
 const ftpDeploy = new FtpDeploy();
 
 var config = {
-	user: ENV.FTP_USER+"@kevin-delcourt.net", 
-    password: ENV.FTP_PSWD, 
+	user: process.env.FTP_USER+"@kevin-delcourt.net", 
+    password: process.env.FTP_PSWD, 
 	host: "ftp.online.net",
 	port: 21,
 	localRoot: __dirname + '/build/',
