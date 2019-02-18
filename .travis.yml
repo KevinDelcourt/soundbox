@@ -5,7 +5,7 @@ node_js:
 cache:
   - npm
 before_install:
-  - curl -u ${FTP_USER}:${FTP_PSWD} ftp://ftp.online.net
+  - curl -u ${FTP_USER}@kevin-delcourt.net:${FTP_PSWD} ftp://ftp.online.net
   - cd client
 script:
   - npm install wait-on -g
