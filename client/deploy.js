@@ -5,7 +5,6 @@ var config = {
 	user: process.env.FTP_USER+"@kevin-delcourt.net", 
     password: process.env.FTP_PSWD, 
 	host: "ftp.online.net",
-	port: 21,
 	localRoot: __dirname + '/build/',
     include: ['*'],      
 	remoteRoot: '/soundbox/',

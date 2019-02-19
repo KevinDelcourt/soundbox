@@ -6,12 +6,3 @@ cache:
   - npm
 before_install:
   - cd client
-  - bash ftp.sh
-script:
-  - yarn build
-deploy:
-  skip_cleanup: true
-  provider: script
-  script: bash ftp.sh
-  on:
-    branch: master
