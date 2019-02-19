@@ -8,8 +8,6 @@ before_install:
   - cd client
   - bash ftp.sh
 script:
-  - npm install wait-on -g
-  - yarn start & wait-on http://localhost:3000
   - yarn build
 deploy:
   skip_cleanup: true
