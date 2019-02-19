@@ -3,4 +3,4 @@ import React from 'react'
 import { Main } from './Main';
 import UploadForm from './components/UploadForm';
 
-ReactDOM.render(<UploadForm />, document.getElementById('root'));
+ReactDOM.render(<Main />, document.getElementById('root'));

@@ -11,6 +11,7 @@ import ProgressBar from './atoms/ProgressBar'
 import Youtube from './youtube/Youtube'
 import MenuBar from './atoms/MenuBar'
 import HotkeyButton from './controls/HotkeyButton'
+import YoutubeInput from './youtube/YoutubeInput';
 
 export default class Soundbox extends Component {
 
@@ -21,6 +22,7 @@ export default class Soundbox extends Component {
         speed: 1,
         shuffle: false,
         showHotkeys: false,
+        youtubeVideoCode:"",
         src: null
     }
     
@@ -48,6 +50,7 @@ export default class Soundbox extends Component {
     setLoop = (boolean) => this.setState({ loop: boolean, shuffle: false })
     setShuffle = (boolean) => this.setState({ shuffle: boolean, loop: false })
     setVolume = (volume) => this.setState({ volume: volume })
+    setCode = (code) => this.setState({youtubeVideoCode: code})
     setShowHotkeys = (boolean) => this.setState({ showHotkeys: boolean})
 
     setSpeed = (speed) => {
@@ -67,7 +70,7 @@ export default class Soundbox extends Component {
     render = () => 
         <div>
             <ProgressBar value={this.state.percent} height="3" />
-
+            <Youtube youtubeVideoCode={this.state.youtubeVideoCode} />
             <ReactAudioPlayer
                     src={this.state.src}
                     listenInterval={100}
@@ -85,7 +88,8 @@ export default class Soundbox extends Component {
                     <ShuffleButton setShuffle={this.setShuffle} shuffle={this.state.shuffle} />
                     <HotkeyButton setShowHotkeys={this.setShowHotkeys} showHotkeys={this.state.showHotkeys} />
                 </ButtonGroup>
-                <Youtube />
+                <YoutubeInput youtubeVideoCode={this.state.youtubeVideoCode} setCode={this.setCode} />
+                
             </MenuBar>
             <Container> 
                 <Row>
