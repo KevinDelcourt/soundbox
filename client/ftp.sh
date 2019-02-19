@@ -3,7 +3,7 @@ cd ./build;
 for entry in *.*
 do
   echo $entry
-  curl -T $entry -u ${FTP_USER}\@kevin-delcourt.net:${FTP_PSWD} --ftp-create-dirs  ftp.online.net/soundbox/$entry --no-epsv \;
+  curl -T $entry -u ${FTP_USER}\@kevin-delcourt.net:${FTP_PSWD} --ftp-create-dirs  ftp.online.net/soundbox/$entry --no-eprv \;
 done
 
 cd ./static/js;
