@@ -7,7 +7,7 @@
 
 # testing
 /client/coverage
-
+db_connect.php
 # production
 /client/build
 

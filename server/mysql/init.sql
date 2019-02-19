@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS sounds;
+
+CREATE TABLE sounds (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  file MEDIUMBLOB NOT NULL,
+  name varchar(11) NOT NULL
+);
+

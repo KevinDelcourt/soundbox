@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, ButtonGroup } from 'reactstrap'
+import { Container, Row, Col, ButtonGroup, Alert } from 'reactstrap'
 import ReactAudioPlayer from 'react-audio-player'
 import PlayButton from './controls/PlayButton'
 import LoopButton from './controls/LoopButton'
@@ -89,11 +89,11 @@ export default class Soundbox extends Component {
             </MenuBar>
             <Container> 
                 <Row>
-                    {this.props.audios.map((a, index) =>
+                    {this.props.audios.length > 0 ? this.props.audios.map((a, index) =>
                         <Col key={index} xs="12" sm="6" md="4" lg="3" style={{ marginTop: "1em", height: "4.5em" }}>
                             <PlayButton showHotkeys={this.state.showHotkeys} index={index} onClick={() => this.play(a.src)}>{a.name}</PlayButton>
                         </Col>
-                    )}
+                    ):<Alert>No sounds loaded</Alert>}
                 </Row>
             </Container>
         </div>
