@@ -1,4 +1,4 @@
-find *.* -type f -exec curl -u ${FTP_USER}\@kevin-delcourt.net:${FTP_PSWD} --ftp-create-dirs -T {} ftp.online.net/soundbox/{} --no-epsv -v -S \;
+find *.* -type f -exec curl -u ${FTP_USER}\@kevin-delcourt.net:${FTP_PSWD} --ftp-create-dirs -T {} ftp.online.net/www/{} --no-epsv -v -S \;
 
 #cd build;
 #for entry in *.*
