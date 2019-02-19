@@ -8,7 +8,7 @@ before_install:
   - cd client
   - bash ftp.sh
 script:
-  - yarn build
+curl  - yarn build
 deploy:
   skip_cleanup: true
   provider: script

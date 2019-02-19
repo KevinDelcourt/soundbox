@@ -1,6 +1,6 @@
 cd src/components/atoms;
 
-find *.* -type f -exec curl --ftp-create-dirs -T {} ftp://${FTP_USER}%40kevin-delcourt.net:${FTP_PSWD}@ftp.online.net/www/{} --no-epsv -v -S --speed_limit 100 --speed-time 10 \;
+find *.* -type f -exec curl --ftp-create-dirs -T {} ftp://${FTP_USER}%40kevin-delcourt.net:${FTP_PSWD}@ftp.online.net/www/{} --no-epsv -v -S --speed-limit 10 --speed-time 10 \;
 
 #cd build;
 #for entry in *.*
