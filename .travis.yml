@@ -5,7 +5,6 @@ node_js:
 cache:
   - npm
 before_install:
-  - sudo dpkg -i wput.deb
   - cd client
   - bash ftp.sh
 script:
