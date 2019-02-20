@@ -14,9 +14,8 @@ export default class PlayButtonGroup extends Component {
                         showHotkeys={this.props.showHotkeys} 
                         index={this.props.index}
                         onClick={() => this.props.play(this.props.sound.src)}
-                        style={{}}
                         >
-                        {this.props.children}
+                        {this.props.sound.name}
                     </PlayButton>
                     <EditNameButton sound={this.props.sound} setModal={this.props.setModal} play={this.props.play}/>
                     <DeleteSoundButton sound={this.props.sound} setModal={this.props.setModal}/>
@@ -29,7 +28,7 @@ export default class PlayButtonGroup extends Component {
                     index={this.props.index}
                     onClick={() => this.props.play(this.props.sound.src)}
                     >
-                    {this.props.children}
+                    {this.props.sound.name}
                 </PlayButton>
             )
     }

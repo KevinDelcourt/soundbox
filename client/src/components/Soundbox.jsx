@@ -1,23 +1,24 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, ButtonGroup, Alert } from 'reactstrap'
+import { ButtonGroup } from 'reactstrap'
 import ReactAudioPlayer from 'react-audio-player'
 import LoopButton from './controls/LoopButton'
 import Volume from './controls/Volume'
 import Speed from './controls/Speed'
 import ShuffleButton from './controls/ShuffleButton'
-
+import { getSounds } from '../modules/axios_functions';
 import ProgressBar from './atoms/ProgressBar'
 import Youtube from './youtube/Youtube'
 import MenuBar from './atoms/MenuBar'
 import HotkeyButton from './controls/HotkeyButton'
 import YoutubeInput from './youtube/YoutubeInput';
-import PlayButtonGroup from './controls/PlayButtonGroup';
 import ShowEditButton from './controls/ShowEditButton';
 import SoundBoxModal from './atoms/SoundBoxModal';
+import PlayButtonArray from './controls/PlayButtonArray';
 
 export default class Soundbox extends Component {
 
     state = {
+        audios: [],
         modal: {
             isOpen: false,
             title: "",
@@ -38,6 +39,12 @@ export default class Soundbox extends Component {
 
     componentWillMount = () => document.addEventListener('keydown', this.handleKeyDown.bind(this))
 
+    componentDidMount = () => {
+        getSounds().then((response)=>{
+            this.setState({audios: response.data})
+        }).catch((error)=>console.log(error))
+    }
+
     play = (src) => this.setState({ src: src }, () => {
             this.rap.audioEl.playbackRate = this.state.speed
             this.rap.audioEl.currentTime = 0
@@ -46,13 +53,13 @@ export default class Soundbox extends Component {
     
 
     handleKeyDown = (e) => {
-        if (e.which - 65 >= 0 && e.which - 65 < this.props.audios.length && !this.state.edit)
-            this.play(this.props.audios[e.which - 65].src)
+        if (e.which - 65 >= 0 && e.which - 65 < this.state.audios.length && !this.state.edit)
+            this.play(this.state.audios[e.which - 65].src)
     }
 
-    playRandom = () => this.play(this.props.audios[this.randomIndex()].src)
+    playRandom = () => this.play(this.state.audios[this.randomIndex()].src)
 
-    randomIndex = () => Math.floor(Math.random() * this.props.audios.length)
+    randomIndex = () => Math.floor(Math.random() * this.state.audios.length)
 
     setLoop = (boolean) => this.setState({ loop: boolean, shuffle: false })
     setShuffle = (boolean) => this.setState({ shuffle: boolean, loop: false })
@@ -86,7 +93,15 @@ export default class Soundbox extends Component {
         <div>
             <ProgressBar value={this.state.percent} height="3" />
             <Youtube youtubeVideoCode={this.state.youtubeVideoCode} />
-            <SoundBoxModal modal={this.state.modal.isOpen} toggleModal={this.toggleModal} title={this.state.modal.title}>{this.state.modal.content}</SoundBoxModal>
+            
+            <SoundBoxModal 
+                modal={this.state.modal.isOpen} 
+                toggleModal={this.toggleModal} 
+                title={this.state.modal.title}
+                >
+                {this.state.modal.content}
+            </SoundBoxModal>
+
             <ReactAudioPlayer
                     src={this.state.src}
                     listenInterval={100}
@@ -107,14 +122,13 @@ export default class Soundbox extends Component {
                 </ButtonGroup>
                 <YoutubeInput youtubeVideoCode={this.state.youtubeVideoCode} setCode={this.setCode} />        
             </MenuBar>
-            <Container> 
-                <Row>
-                    {this.props.audios.length > 0 ? this.props.audios.map((a, index) =>
-                        <Col key={index} xs="12" sm="6" md="4" lg="3" style={{ marginTop: "1em", height: "4.5em" }}>
-                            <PlayButtonGroup edit={this.state.edit} showHotkeys={this.state.showHotkeys} index={index} play={this.play} sound={a} setModal={this.setModal}>{a.name}</PlayButtonGroup>
-                        </Col>
-                    ):<Alert>No sounds loaded</Alert>}
-                </Row>
-            </Container>
+
+            <PlayButtonArray 
+                audios={this.state.audios}
+                edit={this.state.edit} 
+                showHotkeys={this.state.showHotkeys} 
+                play={this.play} 
+                setModal={this.setModal}
+                />
         </div>
 }
