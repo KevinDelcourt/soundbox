@@ -11,11 +11,9 @@ export default class PlayButton extends Component{
             color='primary' 
             size='lg' 
             onClick={this.props.onClick}
-            style={{height: "100%"}}
+            style={this.props.style?this.props.style:{height: "100%"}}
             >
                 {this.props.children}
-                {this.props.showHotkeys?<small> {this.indexToChar(this.props.index)}</small>:""}
-                
+                {this.props.showHotkeys?<small> {this.indexToChar(this.props.index)}</small>:""}        
         </Button>
-    
 }

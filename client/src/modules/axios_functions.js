@@ -8,3 +8,7 @@ export const getBaseUrl = () => {
 }
 
 export const getSounds = () => axios.get(getBaseUrl() + 'get_sounds.php')
+
+export const deleteSound = (jsonData) => axios.post(getBaseUrl()+ "delete_sound.php",jsonData)
+
+export const updateSoundName = (jsonData) => axios.post(getBaseUrl()+ "update_sound_name.php",jsonData)
