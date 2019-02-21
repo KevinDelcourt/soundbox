@@ -32,7 +32,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 //$req->execute($_POST['name'][$key]);
 
                 $pdo->exec("INSERT INTO sounds (file,name) VALUES ('{$audio}',{$pdo->quote($_POST['name'][$key])})");
-                $returnCode .= $pdo->errorInfo()[0];
+                $returnCode .= $pdo->errorInfo()[0]." ";
             }
             echo "upload done: ".$returnCode;
         }

@@ -1,6 +1,6 @@
-import React from 'react';
-import { FormGroup, Input, FormText, FormFeedback } from 'reactstrap';
-import FileInput from './FileInput';
+import React from 'react'
+import { FormGroup, Input, FormText, FormFeedback } from 'reactstrap'
+import FileInput from './FileInput'
 import { uploadSounds }  from '../../modules/axios_functions'
 import BasicForm from '../atoms/BasicForm'
 
