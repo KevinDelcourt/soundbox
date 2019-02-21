@@ -15,10 +15,13 @@ import ShowEditButton from './controls/ShowEditButton';
 import SoundBoxModal from './atoms/SoundBoxModal';
 import PlayButtonArray from './controls/PlayButtonArray';
 import UploadFormButton from './controls/UploadFormButton';
+import Navigation from './atoms/Navigation';
 
 export default class Soundbox extends Component {
 
     state = {
+        page: 0,
+        audioCount: 0,
         audios: [],
         modal: {
             isOpen: false,
@@ -44,7 +47,7 @@ export default class Soundbox extends Component {
     componentWillMount = () => document.addEventListener('keydown', this.handleKeyDown.bind(this))
 
     componentDidMount = () => {
-        getSounds().then((response)=>{
+        getSounds(this.state.page).then((response)=>{
             this.setState({audios: response.data})
         }).catch((error)=>console.log(error))
     }
@@ -54,7 +57,6 @@ export default class Soundbox extends Component {
             this.rap.audioEl.currentTime = 0
             this.rap.audioEl.play()
         })
-    
 
     handleKeyDown = (e) => {
         if (e.which - 65 >= 0 && e.which - 65 < this.state.audios.length && !this.state.edit)
@@ -73,6 +75,8 @@ export default class Soundbox extends Component {
     setShowHotkeys = (boolean) => this.setState({ showHotkeys: boolean, edit: false})
     setModal = (modal) => this.setState({modal: modal})
     
+    setPage = (page) => this.setState({page: page},()=>this.componentDidMount()) 
+
     toggleModal = () => {
         let newModal = this.state.modal
         newModal.isOpen = !this.state.modal.isOpen
@@ -87,7 +91,7 @@ export default class Soundbox extends Component {
     updateProgressBar = () =>
         this.setState({ percent: this.rap.audioEl.currentTime * 100 / this.rap.audioEl.duration })
 
-    onEnded = () => {
+    onAudioEnded = () => {
         this.setState({ percent: 0 })
         if (this.state.shuffle)
             this.playRandom()
@@ -95,7 +99,7 @@ export default class Soundbox extends Component {
     
     render = () => 
         <div>
-            <ProgressBar value={this.state.percent} height="3" />
+            <ProgressBar value={this.state.percent} />
             <Youtube youtubeVideoCode={this.state.youtubeVideoCode} />
             
             <SoundBoxModal 
@@ -108,7 +112,7 @@ export default class Soundbox extends Component {
                     src={this.state.src}
                     listenInterval={100}
                     onListen={this.updateProgressBar}
-                    onEnded={this.onEnded}
+                    onEnded={this.onAudioEnded}
                     ref={(element) => { this.rap = element }}
                     loop={this.state.loop}
                     volume={this.state.volume}
@@ -133,5 +137,7 @@ export default class Soundbox extends Component {
                 play={this.play} 
                 setModal={this.setModal}
                 />
+            
+            <Navigation page={this.state.page} setPage={this.setPage} />
         </div>
 }

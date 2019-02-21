@@ -7,7 +7,9 @@ export const getBaseUrl = () => {
         return 'http://soundbox.kevin-delcourt.net/api/'
 }
 
-export const getSounds = () => axios.get(getBaseUrl() + 'get_sounds.php')
+export const getSounds = (page) => axios.get(getBaseUrl() + 'get_sounds.php',{params:{page: page}})
+
+export const getSoundCount = () => axios.get(getBaseUrl() + 'get_sound_count.php')
 
 export const uploadSounds = (formData) => axios.post(getBaseUrl()+ "add_sound.php",formData,{headers:{'Content-Type': 'multipart/form-data'}})
 
