@@ -14,8 +14,10 @@ export default class BasicForm extends Component {
             let res = response.data.split(': ')
             if(res[0] === 'error')
                 this.setState({color: "danger", text: response.data})
-            else
+            else{
                 this.setState({color: "success", text: response.data})
+                this.props.onSuccess()
+            }
         }).catch((error)=>console.log(error))
     }
 

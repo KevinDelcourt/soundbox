@@ -1,5 +1,5 @@
 <?php
-require('./db/db_connect.php');
+require('api_functions.php');
 
 $stmt = $pdo->query('SELECT file,name,id FROM sounds ORDER BY id DESC LIMIT 26');
 $stmt->bindColumn(1, $file, PDO::PARAM_LOB);

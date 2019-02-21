@@ -14,6 +14,7 @@ import YoutubeInput from './youtube/YoutubeInput';
 import ShowEditButton from './controls/ShowEditButton';
 import SoundBoxModal from './atoms/SoundBoxModal';
 import PlayButtonArray from './controls/PlayButtonArray';
+import UploadFormButton from './controls/UploadFormButton';
 
 export default class Soundbox extends Component {
 
@@ -22,7 +23,8 @@ export default class Soundbox extends Component {
         modal: {
             isOpen: false,
             title: "",
-            content: ""
+            content: "",
+            size: ""
         },
         percent: 0,
         loop: false,
@@ -36,6 +38,8 @@ export default class Soundbox extends Component {
     }
     
     rap
+
+    iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform)
 
     componentWillMount = () => document.addEventListener('keydown', this.handleKeyDown.bind(this))
 
@@ -95,12 +99,10 @@ export default class Soundbox extends Component {
             <Youtube youtubeVideoCode={this.state.youtubeVideoCode} />
             
             <SoundBoxModal 
-                modal={this.state.modal.isOpen} 
+                modal={this.state.modal} 
                 toggleModal={this.toggleModal} 
-                title={this.state.modal.title}
-                >
-                {this.state.modal.content}
-            </SoundBoxModal>
+                onClosed={this.componentDidMount}
+                />
 
             <ReactAudioPlayer
                     src={this.state.src}
@@ -112,12 +114,13 @@ export default class Soundbox extends Component {
                     volume={this.state.volume}
                 />
 
-            <MenuBar brand={<Volume volume={this.state.volume} setVolume={this.setVolume} />}>
-                <Speed speed={this.state.speed} setSpeed={this.setSpeed} />
+            <MenuBar brand={this.iOS?<Speed speed={this.state.speed} setSpeed={this.setSpeed} />:<Volume volume={this.state.volume} setVolume={this.setVolume} />}>
+                {this.iOS?"":<Speed speed={this.state.speed} setSpeed={this.setSpeed} />}
                 <ButtonGroup>
                     <LoopButton setLoop={this.setLoop} loop={this.state.loop} />
                     <ShuffleButton setShuffle={this.setShuffle} shuffle={this.state.shuffle} />
                     <HotkeyButton setShowHotkeys={this.setShowHotkeys} showHotkeys={this.state.showHotkeys} />
+                    {this.state.edit?<UploadFormButton setModal={this.setModal} play={this.play}/>:""}
                     <ShowEditButton setEdit={this.setEdit} edit={this.state.edit} />
                 </ButtonGroup>
                 <YoutubeInput youtubeVideoCode={this.state.youtubeVideoCode} setCode={this.setCode} />        

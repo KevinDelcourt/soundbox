@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Button } from 'reactstrap';
 import FileInput from '../form/FileInput';
 import { updateSoundName } from '../../modules/axios_functions';
 import BasicForm from '../atoms/BasicForm';
@@ -10,6 +9,8 @@ export default class EditNameForm extends Component {
         password:""
     }
 
+    setName = (name) => this.setState({name: name})
+    
     render = () =>
         <BasicForm
             button={{color: "primary", text: "Edit name"}}
@@ -17,7 +18,7 @@ export default class EditNameForm extends Component {
             password={this.state.password}
             setPassword={(password)=>this.setState({password: password})}
             >
-            <FileInput play={this.props.play} file={this.props.sound} value={this.state.name} setValue={(value)=>this.setState({name: value})} noTitle/>
+            <FileInput play={this.props.play} file={this.props.sound} value={this.state.name} setValue={this.setName} noTitle/>
         </BasicForm>
 
 }

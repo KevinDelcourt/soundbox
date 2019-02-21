@@ -1,21 +1,25 @@
 <?php
-require('./db/db_connect.php');
+require('api_functions.php');
 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: *');
 
-$data = json_decode(file_get_contents('php://input'),true);
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $data = json_decode(file_get_contents('php://input'),true);
 
-if(empty($data["password"]) || !password_verify($data["password"],APP_PASSWORD))
-    echo 'error: wrong password';
-else
-    if(empty($data["name"]) || empty($data["id"]))
-        echo ('error: bad request');
-    else{
-        $req = $pdo->prepare("UPDATE sounds SET name=:name WHERE id=:id");
-        $req->bindParam(":name",$data["name"]);
-        $req->bindParam(":id",$data["id"]);
-        $req->execute();
+    $check = password_check($data["password"],$pdo);
 
-        echo "Operation done: ".$pdo->errorInfo()[0];
-    }
+    if($check !== "ok")
+        echo $check;
+    else
+        if(empty($data["name"]) || empty($data["id"]))
+            echo ('error: bad request '.$data["name"].' - '.$data["id"]);
+        else{
+            $req = $pdo->prepare("UPDATE sounds SET name=:name WHERE id=:id");
+            $req->bindParam(":name",$data["name"]);
+            $req->bindParam(":id",$data["id"]);
+            $req->execute();
+
+            echo "Operation done: ".$pdo->errorInfo()[0];
+        }
+}

@@ -4,24 +4,17 @@ import PlayButton from '../controls/PlayButton';
 
 export default class FileInput extends React.Component {
     state = {
-        value: this.props.file.name.split('.')[0].substring(0,11),
         invalid: false
     }
 
-    setValue = (newValue) => {
-        if(newValue.length > 11)
-            this.setState({invalid: true})
-        else{
-            this.setState({invalid: false, value: newValue})
-            if(this.props.value)
+    setValue = (newValue) => 
+        this.setState({invalid: newValue.length > 11},()=>{
+            if(!this.state.invalid)
                 this.props.setValue(newValue)
-        }
-            
-    }
+        })  
 
     render = () =>
     <Card className="m-1">
-        
         {this.props.noTitle? "":<CardHeader>{this.props.file.name}</CardHeader>}
         <CardBody> 
             <Row>
@@ -30,8 +23,8 @@ export default class FileInput extends React.Component {
                         <Input 
                             type="text" 
                             name={this.props.id?"name["+this.props.id+"]":"name"} 
-                            placeholder="Filename" 
-                            value={this.props.value?this.props.value:this.state.value} 
+                            placeholder="Sound name" 
+                            value={this.props.value} 
                             onChange={(evt) => this.setValue(evt.target.value)}
                             invalid={this.state.invalid}
                             />
@@ -41,7 +34,7 @@ export default class FileInput extends React.Component {
                     </FormGroup>
                 </Col>
                 <Col sm="7" >
-                    <PlayButton onClick={()=>this.props.play(this.props.file.src)}>{this.state.value}</PlayButton>
+                    <PlayButton onClick={()=>this.props.play(this.props.file.src)}>{this.props.value}</PlayButton>
                 </Col>
             </Row>
         </CardBody>

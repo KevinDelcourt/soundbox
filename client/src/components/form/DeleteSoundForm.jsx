@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Button } from 'reactstrap';
 import { deleteSound } from '../../modules/axios_functions';
 import BasicForm from '../atoms/BasicForm';
 
