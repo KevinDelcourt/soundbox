@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Button, ButtonGroup} from 'reactstrap'
+import {ButtonGroup} from 'reactstrap'
 import PlayButton from './PlayButton';
 import EditNameButton from './EditNameButton';
 import DeleteSoundButton from './DeleteSoundButton';

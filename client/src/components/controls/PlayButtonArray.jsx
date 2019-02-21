@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, ButtonGroup, Alert } from 'reactstrap'
+import { Container, Row, Col, Alert } from 'reactstrap'
 import PlayButtonGroup from '../controls/PlayButtonGroup';
 
 export default class PlayButtonArray extends Component {

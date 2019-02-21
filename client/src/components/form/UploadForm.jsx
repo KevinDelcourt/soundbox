@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText, FormFeedback } from 'reactstrap';
-import { getBaseUrl } from '../../modules/axios_functions'
+import { FormGroup, Input, FormText, FormFeedback } from 'reactstrap';
 import FileInput from './FileInput';
 import { uploadSounds }  from '../../modules/axios_functions'
 import BasicForm from '../atoms/BasicForm'
