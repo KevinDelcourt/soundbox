@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ToggleButton from '../atoms/ToggleButton';
+import ToggleButton from '../utilities/button/ToggleButton';
 
 export default class YoutubeToggle extends Component {
     render = () => 

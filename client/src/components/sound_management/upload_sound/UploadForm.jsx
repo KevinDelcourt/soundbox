@@ -1,8 +1,8 @@
 import React from 'react'
 import { FormGroup, Input, FormText, FormFeedback } from 'reactstrap'
-import FileInput from './FileInput'
-import { uploadSounds }  from '../../modules/axios_functions'
-import BasicForm from '../atoms/BasicForm'
+import NameInput from '../../utilities/form/NameInput'
+import { uploadSounds }  from '../../../modules/axios_functions'
+import BasicForm from '../../utilities/form/BasicForm'
 
 export default class UploadForm extends React.Component {
 
@@ -58,7 +58,7 @@ export default class UploadForm extends React.Component {
             onSuccess={this.reset}
             >
             {this.state.files.map((f,index)=>
-                <FileInput id={index} key={index} file={f} play={this.props.play} value={this.state.names[index]} setValue={(name)=>this.setName(index,name)} />
+                <NameInput id={index} key={index} file={f} play={this.props.play} value={this.state.names[index]} setValue={(name)=>this.setName(index,name)} />
             )}
 
             <FormGroup>

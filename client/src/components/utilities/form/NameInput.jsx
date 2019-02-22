@@ -1,8 +1,8 @@
 import React from 'react'
 import { FormGroup, Input, FormText, Col, Row, Card, CardBody, CardHeader } from 'reactstrap';
-import PlayButton from '../controls/PlayButton';
+import PlayButton from '../../controls/PlayButton';
 
-export default class FileInput extends React.Component {
+export default class NameInput extends React.Component {
     state = {
         invalid: false
     }

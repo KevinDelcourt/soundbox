@@ -6,15 +6,15 @@ import Volume from './controls/Volume'
 import Speed from './controls/Speed'
 import ShuffleButton from './controls/ShuffleButton'
 import { getSounds } from '../modules/axios_functions';
-import ProgressBar from './atoms/ProgressBar'
+import ProgressBar from './soundbox/ProgressBar'
 import Youtube from './youtube/Youtube'
-import MenuBar from './atoms/MenuBar'
+import MenuBar from './soundbox/MenuBar'
 import HotkeyButton from './controls/HotkeyButton'
 import ShowEditButton from './controls/ShowEditButton';
-import SoundBoxModal from './atoms/SoundBoxModal';
-import PlayButtonArray from './controls/PlayButtonArray';
-import UploadFormButton from './controls/UploadFormButton';
-import Navigation from './atoms/Navigation';
+import SoundBoxModal from './soundbox/SoundBoxModal';
+import PlayButtonArray from './soundbox/PlayButtonArray';
+import UploadFormButton from './sound_management/upload_sound/UploadFormButton'
+import Navigation from './soundbox/Navigation';
 import YoutubeInputButton from './youtube/YoutubeInputButton';
 
 export default class Soundbox extends Component {
@@ -61,7 +61,7 @@ export default class Soundbox extends Component {
     handleKeyDown = (e) => {
         if (e.which - 65 >= 0 && e.which - 65 < this.state.audios.length && !this.state.edit)
             this.play(this.state.audios[e.which - 65].src)
-        if (e.which === 188)
+        if (e.which === 188 && !this.state.edit)
             if(this.state.speed === 1)
                 this.setSpeed(0.1)
             else
@@ -124,14 +124,19 @@ export default class Soundbox extends Component {
 
             <MenuBar brand={this.iOS?<Speed speed={this.state.speed} setSpeed={this.setSpeed} />:<Volume volume={this.state.volume} setVolume={this.setVolume} />}>
                 {this.iOS?"":<Speed speed={this.state.speed} setSpeed={this.setSpeed} />}
-                <ButtonGroup>
-                    <LoopButton setLoop={this.setLoop} loop={this.state.loop} />
-                    <ShuffleButton setShuffle={this.setShuffle} shuffle={this.state.shuffle} />
-                    <HotkeyButton setShowHotkeys={this.setShowHotkeys} showHotkeys={this.state.showHotkeys} />
-                    {this.state.edit?<UploadFormButton setModal={this.setModal} play={this.play}/>:""}
-                    <ShowEditButton setEdit={this.setEdit} edit={this.state.edit} />
-                    <YoutubeInputButton youtubeVideoCode={this.state.youtubeVideoCode} setCode={this.setCode} setModal={this.setModal}/>
-                </ButtonGroup>
+                {this.state.edit?
+                    <ButtonGroup size="lg">
+                        <UploadFormButton setModal={this.setModal} play={this.play}/>
+                    </ButtonGroup>
+                    :
+                    <ButtonGroup size="lg">
+                        <LoopButton setLoop={this.setLoop} loop={this.state.loop} />
+                        <ShuffleButton setShuffle={this.setShuffle} shuffle={this.state.shuffle} />
+                        <HotkeyButton setShowHotkeys={this.setShowHotkeys} showHotkeys={this.state.showHotkeys} />
+                        <YoutubeInputButton youtubeVideoCode={this.state.youtubeVideoCode} setCode={this.setCode} setModal={this.setModal}/>
+                    </ButtonGroup>           
+                }
+                <ShowEditButton setEdit={this.setEdit} edit={this.state.edit} />
             </MenuBar>
 
             <PlayButtonArray 

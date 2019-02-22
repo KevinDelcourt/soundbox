@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {ButtonGroup} from 'reactstrap'
 import PlayButton from './PlayButton';
-import EditNameButton from './EditNameButton';
-import DeleteSoundButton from './DeleteSoundButton';
+import EditNameButton from '../sound_management/edit_sound_name/EditNameButton';
+import DeleteSoundButton from '../sound_management/delete_sound/DeleteSoundButton';
 
 export default class PlayButtonGroup extends Component {
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SoundBoxModal from '../atoms/SoundBoxModal';
+import SoundBoxModal from '../soundbox/SoundBoxModal';
 import YoutubeInput from './YoutubeInput';
 
 export default class YoutubeModal extends Component {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import FileInput from '../form/FileInput';
-import { updateSoundName } from '../../modules/axios_functions';
-import BasicForm from '../atoms/BasicForm';
+import NameInput from '../../utilities/form/NameInput';
+import { updateSoundName } from '../../../modules/axios_functions';
+import BasicForm from '../../utilities/form/BasicForm';
 
 export default class EditNameForm extends Component {
     state={
@@ -18,7 +18,7 @@ export default class EditNameForm extends Component {
             password={this.state.password}
             setPassword={(password)=>this.setState({password: password})}
             >
-            <FileInput play={this.props.play} file={this.props.sound} value={this.state.name} setValue={this.setName} noTitle/>
+            <NameInput play={this.props.play} file={this.props.sound} value={this.state.name} setValue={this.setName} noTitle/>
         </BasicForm>
 
 }

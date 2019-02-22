@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ToggleButton from '../atoms/ToggleButton';
+import ToggleButton from '../utilities/button/ToggleButton';
 
 export default class ShowEditButton extends Component{
     render = () => 
@@ -8,6 +8,6 @@ export default class ShowEditButton extends Component{
             master={this.props.edit} 
             setMaster={this.props.setEdit}
             >
-            <i className="fas fa-tools"></i>
+            <i className="fas fa-lock"></i>
         </ToggleButton>
 }

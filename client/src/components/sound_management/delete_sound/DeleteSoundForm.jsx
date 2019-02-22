@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { deleteSound } from '../../modules/axios_functions';
-import BasicForm from '../atoms/BasicForm';
+import { deleteSound } from '../../../modules/axios_functions';
+import BasicForm from '../../utilities/form/BasicForm';
 
 export default class DeleteSoundForm extends Component {
     state={ password:"" }
