@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
-import { Main } from './Main';
 import './index.css'
+import Soundbox from './components/Soundbox';
 
-ReactDOM.render(<Main />, document.getElementById('root'));
+ReactDOM.render(<Soundbox />, document.getElementById('root'));

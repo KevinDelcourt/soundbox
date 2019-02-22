@@ -10,12 +10,12 @@ import ProgressBar from './atoms/ProgressBar'
 import Youtube from './youtube/Youtube'
 import MenuBar from './atoms/MenuBar'
 import HotkeyButton from './controls/HotkeyButton'
-import YoutubeInput from './youtube/YoutubeInput';
 import ShowEditButton from './controls/ShowEditButton';
 import SoundBoxModal from './atoms/SoundBoxModal';
 import PlayButtonArray from './controls/PlayButtonArray';
 import UploadFormButton from './controls/UploadFormButton';
 import Navigation from './atoms/Navigation';
+import YoutubeInputButton from './youtube/YoutubeInputButton';
 
 export default class Soundbox extends Component {
 
@@ -61,14 +61,18 @@ export default class Soundbox extends Component {
     handleKeyDown = (e) => {
         if (e.which - 65 >= 0 && e.which - 65 < this.state.audios.length && !this.state.edit)
             this.play(this.state.audios[e.which - 65].src)
+        if (e.which === 188)
+            if(this.state.speed === 1)
+                this.setSpeed(0.1)
+            else
+                this.setSpeed(1)
     }
 
     playRandom = () => this.play(this.state.audios[this.randomIndex()].src)
 
     randomIndex = () => Math.floor(Math.random() * this.state.audios.length)
 
-    setLoop = (boolean) => this.setState({ loop: boolean, shuffle: false })
-    setShuffle = (boolean) => this.setState({ shuffle: boolean, loop: false })
+
     setVolume = (volume) => this.setState({ volume: volume })
     setCode = (code) => this.setState({youtubeVideoCode: code})
     setEdit = (boolean) => this.setState({edit: boolean, showHotkeys: false})
@@ -126,8 +130,8 @@ export default class Soundbox extends Component {
                     <HotkeyButton setShowHotkeys={this.setShowHotkeys} showHotkeys={this.state.showHotkeys} />
                     {this.state.edit?<UploadFormButton setModal={this.setModal} play={this.play}/>:""}
                     <ShowEditButton setEdit={this.setEdit} edit={this.state.edit} />
+                    <YoutubeInputButton youtubeVideoCode={this.state.youtubeVideoCode} setCode={this.setCode} setModal={this.setModal}/>
                 </ButtonGroup>
-                <YoutubeInput youtubeVideoCode={this.state.youtubeVideoCode} setCode={this.setCode} />        
             </MenuBar>
 
             <PlayButtonArray 
