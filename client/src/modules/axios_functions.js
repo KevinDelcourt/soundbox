@@ -15,4 +15,11 @@ export const uploadSounds = (formData) => axios.post(getBaseUrl()+ "add_sound.ph
 
 export const deleteSound = (jsonData) => axios.post(getBaseUrl()+ "delete_sound.php",jsonData)
 
+export const deletePlaylist = (jsonData) => axios.post(getBaseUrl()+ "delete_playlist.php",jsonData)
+
 export const updateSoundName = (jsonData) => axios.post(getBaseUrl()+ "update_sound_name.php",jsonData)
+
+export const getPlaylists = () => axios.get(getBaseUrl() + 'get_playlists.php')
+
+export const getPlaylistSounds = (id) => axios.get(getBaseUrl() + 'get_playlist_sounds.php',{params:{id: id}})
+

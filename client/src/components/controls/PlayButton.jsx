@@ -13,7 +13,7 @@ export default class PlayButton extends Component{
             color='primary' 
             size='lg' 
             onClick={()=>this.context.play(this.props.src)}
-            style={this.props.style?this.props.style:{height: "100%"}}
+            style={{height: "100%",opacity: "0.9"}}
             >
                 {this.props.children}
                 {this.context.sb.hotKeys?<small> {this.indexToChar(this.props.index)}</small>:""}        

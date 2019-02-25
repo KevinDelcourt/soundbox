@@ -11,7 +11,7 @@ export default class Navigation extends React.Component {
         page: []
     }
 
-    setPage = (value) => this.context.setSb({page: value},this.props.reload)
+    setPage = (value) => this.context.setSb({page: value},this.context.reload)
 
     componentDidMount = () => 
         getSoundCount(this.context.sb.search).then((response)=>{
@@ -45,7 +45,7 @@ export default class Navigation extends React.Component {
     }
 
     render = () => {
-        if(this.state.page.length > 1)
+        if(this.state.page.length > 1 && this.context.sb.idPlaylist === -1)
             return(
                 <Container className="d-flex my-2">
                     <ButtonGroup className="mx-auto" size="lg">

@@ -18,6 +18,7 @@ export default class PlayButtonGroup extends Component {
                         >
                         {this.props.sound.name}
                     </PlayButton>
+                        
                     <EditNameButton sound={this.props.sound} />
                     <DeleteSoundButton sound={this.props.sound} />
                 </ButtonGroup>

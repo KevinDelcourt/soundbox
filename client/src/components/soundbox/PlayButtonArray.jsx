@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, Alert } from 'reactstrap'
 import PlayButtonGroup from '../controls/PlayButtonGroup';
+import Navigation from './Navigation';
 
 
 export default class PlayButtonArray extends Component {
@@ -17,5 +18,6 @@ export default class PlayButtonArray extends Component {
                 </Col>
             ):<Alert color="warning">No sounds loaded</Alert>}
         </Row>
+        <Navigation />
     </Container>
 }

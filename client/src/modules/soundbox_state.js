@@ -9,7 +9,9 @@ const defaultState = {
     edit: false,
     youtubeVideoCode: "",
     search:"",
-    page:0
+    page:0,
+    choosePlaylist: false,
+    idPlaylist: -1
 }
 
 export default class SoundboxState extends AppState {
