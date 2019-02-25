@@ -45,7 +45,7 @@ export default class Navigation extends React.Component {
     }
 
     render = () => {
-        if(this.state.page.length > 1 && this.context.sb.idPlaylist === -1)
+        if(this.state.page.length > 1 &&(this.context.sb.idPlaylist === -1 || this.context.sb.editPlaylist))
             return(
                 <Container className="d-flex my-2">
                     <ButtonGroup className="mx-auto" size="lg">

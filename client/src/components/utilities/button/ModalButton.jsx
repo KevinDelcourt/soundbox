@@ -17,6 +17,7 @@ export default class ModalButton extends Component {
             color={this.props.color}
             title={this.props.title}
             onClick={this.prepareModal}
+            size="lg"
             >
             {this.props.children}
         </Button>

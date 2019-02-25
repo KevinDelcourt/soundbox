@@ -13,6 +13,7 @@ import YoutubeInputButton from '../youtube/YoutubeInputButton';
 import SearchSoundButton from '../sound_management/search_sound/SearchSoundButton';
 import Context from '../../context'
 import ChoosePlaylistButton from '../controls/ChoosePlaylistButton';
+import AddPlaylistButton from '../sound_management/add_playlist/AddPlaylistButton';
 
 export default class Menu extends Component {
     static contextType = Context
@@ -32,6 +33,7 @@ export default class Menu extends Component {
                 {this.context.sb.edit?
                     <ButtonGroup size="lg">
                         <UploadFormButton />
+                        <AddPlaylistButton />
                     </ButtonGroup>
                     :
                     <ButtonGroup size="lg">
@@ -39,12 +41,12 @@ export default class Menu extends Component {
                         <ShuffleButton />
                         <HotkeyButton />
                         <YoutubeInputButton />
-                        
                     </ButtonGroup>           
                 }
                 <ButtonGroup>
-                    {this.context.sb.idPlaylist === -1?<SearchSoundButton />:""}
-                    <ChoosePlaylistButton />
+                    {this.context.sb.idPlaylist === -1 || this.context.sb.editPlaylist?<SearchSoundButton />:""}
+                    
+                    {this.context.sb.editPlaylist?"":<ChoosePlaylistButton />}
                 </ButtonGroup>
                 <ShowEditButton />
             </MenuBar>

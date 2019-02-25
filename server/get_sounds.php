@@ -2,9 +2,11 @@
 require('api_functions.php');
 
 $page = intval($_GET['page'])*26;
-$search = $_GET['search'];
+$search = "%".$_GET['search']."%";
 
-$stmt = $pdo->query("SELECT file,name,id FROM sounds WHERE name LIKE '%$search%' ORDER BY id DESC LIMIT $page,26");
+$stmt = $pdo->prepare("SELECT file,name,id FROM sounds WHERE name LIKE :search ORDER BY id DESC LIMIT $page,26");
+$stmt->bindParam(":search",$search,PDO::PARAM_STR);
+$stmt->execute();
 $stmt->bindColumn(1, $file, PDO::PARAM_LOB);
 $stmt->bindColumn(2, $name);
 $stmt->bindColumn(3, $id);

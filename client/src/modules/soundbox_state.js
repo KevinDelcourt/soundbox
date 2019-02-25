@@ -11,7 +11,8 @@ const defaultState = {
     search:"",
     page:0,
     choosePlaylist: false,
-    idPlaylist: -1
+    idPlaylist: -1,
+    editPlaylist: false
 }
 
 export default class SoundboxState extends AppState {

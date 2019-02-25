@@ -8,6 +8,7 @@ import Menu from './soundbox/Menu';
 import Context from '../context'
 import Youtube from './youtube/Youtube';
 import PlaylistArray from './soundbox/PlaylistArray';
+import EditPlaylistPanel from './sound_management/edit_playlist/EditPlaylistPanel';
 
 export default class Soundbox extends Component {
 
@@ -27,7 +28,7 @@ export default class Soundbox extends Component {
     componentWillMount = () => document.addEventListener('keydown', this.handleKeyDown)
 
     componentDidMount = () => {
-        if(this.state.sb.idPlaylist !== -1)
+        if(this.state.sb.idPlaylist !== -1 && !this.state.sb.editPlaylist)
             getPlaylistSounds(this.state.sb.idPlaylist).then((response)=>{
                 this.setState({audios: response.data})
             }).catch((error)=>console.log(error))
@@ -64,7 +65,7 @@ export default class Soundbox extends Component {
         }
     }
 
-    canHandleKeyDown = () => !this.state.sb.edit && !this.state.modal.isOpen
+    canHandleKeyDown = () => !this.state.sb.edit && !this.state.modal.isOpen && !this.state.sb.editPlaylist
 
     playRandom = () => this.play(this.state.audios[this.randomIndex()].src)
     randomIndex = () => Math.floor(Math.random() * this.state.audios.length)
@@ -106,12 +107,11 @@ export default class Soundbox extends Component {
 
             <Youtube />
             <Menu />
+            {this.state.sb.editPlaylist?<EditPlaylistPanel audios={this.state.audios} idPlaylist={this.state.sb.idPlaylist}/>:""}
+            
+            {this.state.sb.choosePlaylist?<PlaylistArray playlists={this.state.playlists} />:""}
 
-            {this.state.sb.choosePlaylist?
-                <PlaylistArray playlists={this.state.playlists} />
-                :
-                <PlayButtonArray audios={this.state.audios}/>
-            }
+            {!this.state.sb.choosePlaylist && !this.state.sb.editPlaylist?<PlayButtonArray audios={this.state.audios}/>:""}
             
         </Context.Provider>
 }
