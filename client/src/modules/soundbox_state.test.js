@@ -61,3 +61,9 @@ it(' set code ok',()=>{
     sb = sb.setCode("ef6hd_p")
     expect(sb.youtubeVideoCode).toBe("ef6hd_p")
 })
+
+it(' set search ok',()=>{
+    expect(sb.search).toBe("")
+    sb = sb.setSearch("ef6hd_p")
+    expect(sb.search).toBe("ef6hd_p")
+})

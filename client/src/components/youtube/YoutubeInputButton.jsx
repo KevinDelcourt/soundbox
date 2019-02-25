@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Button } from 'reactstrap';
-import YoutubeModal from './YoutubeModal';
+import YoutubeInput from './YoutubeInput';
+import ModalButton from '../utilities/button/ModalButton';
 
 
 export default class YoutubeInputButton extends Component {
@@ -9,13 +9,17 @@ export default class YoutubeInputButton extends Component {
     toggleModal = () => this.setState({isOpen: !this.state.isOpen})
 
     render = () =>
-        <Button
-            color="primary"
-            title="Start a video in the background"
-            onClick={this.toggleModal}
+    <ModalButton
+        color="primary"
+        title="Start a video in the background"
+        modal={{
+            title: "Paste youtube url below.",
+            size: "sm",
+            content: <YoutubeInput />
+        }}
         >
-            <i className="fas fa-music"></i>
-            <YoutubeModal isOpen={this.state.isOpen} toggleModal={this.toggleModal} youtubeVideoCode={this.props.youtubeVideoCode} setCode={this.props.setCode} />
-        </Button>
+        <i className="fas fa-music"></i>
+    </ModalButton>
 
 }
+

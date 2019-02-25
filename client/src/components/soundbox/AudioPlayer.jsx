@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import ReactAudioPlayer from 'react-audio-player'
-import ProgressBar from './ProgressBar';
-import Youtube from '../youtube/Youtube';
+import ProgressBar from './ProgressBar'
+import Context from '../../context'
+
 
 export default class AudioPlayer extends Component {
+    static contextType = Context
 
     state={ percent: 0 }
 
     componentDidUpdate = () => {
-        this.player.audioEl.playbackRate = this.props.sb.speed;
+        this.player.audioEl.playbackRate = this.context.sb.speed;
     }
 
     updateProgressBar = () =>
@@ -19,7 +21,6 @@ export default class AudioPlayer extends Component {
     render = () =>
         <div>
             <ProgressBar value={this.state.percent} />
-            <Youtube youtubeVideoCode={this.props.sb.youtubeVideoCode} />
             <ReactAudioPlayer
                 ref={(ref) => { this.player = ref }}
                 listenInterval={100}
@@ -27,8 +28,8 @@ export default class AudioPlayer extends Component {
                 onEnded={this.onEnded}
 
                 src={this.props.src}
-                loop={this.props.sb.loop}
-                volume={this.props.sb.volume}
+                loop={this.context.sb.loop}
+                volume={this.context.sb.volume}
                 />
         </div>
 }

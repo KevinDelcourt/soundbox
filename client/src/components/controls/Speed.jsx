@@ -1,15 +1,19 @@
 import React from "react"
 import { Button, ButtonGroup } from 'reactstrap'
+import Context from '../../context'
 
 export default class Speed extends React.Component{
+    static contextType = Context
+
+    setSpeed = (value) => this.context.setSb({speed: value})
     
-    onChange = (evt) => this.props.setSpeed(evt.target.value/10)
+    onChange = (evt) => this.setSpeed(evt.target.value/10)
 
     cycleSpeed = () => {
-        if(this.props.speed === 1)
-            this.props.setSpeed(0.1)
+        if(this.context.sb.speed === 1)
+            this.setSpeed(0.1)
         else    
-            this.props.setSpeed(1)
+            this.setSpeed(1)
     }
 
     render = () => 
@@ -17,14 +21,14 @@ export default class Speed extends React.Component{
             <Button disabled color="primary" size="lg">
                 <input 
                     type="range" 
-                    onChange={(evt)=>this.onChange(evt)}
-                    value={this.props.speed*10}
+                    onChange={this.onChange}
+                    value={this.context.sb.speed*10}
                     min="1"
                     max="20"
                     />
             </Button>
             <Button color="primary" size="lg" onClick={this.cycleSpeed}>
-                {"x"+(this.props.speed)}
+                {"x"+(this.context.sb.speed)}
             </Button>
         </ButtonGroup>   
     

@@ -6,5 +6,3 @@ cache:
   - npm
 before_install:
   - cd client
-script:
-  - echo "youhou"

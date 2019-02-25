@@ -7,7 +7,9 @@ const defaultState = {
     speed: 1,
     hotKeys: false,
     edit: false,
-    youtubeVideoCode: ""
+    youtubeVideoCode: "",
+    search:"",
+    page:0
 }
 
 export default class SoundboxState extends AppState {
@@ -24,5 +26,6 @@ export default class SoundboxState extends AppState {
     setHotKeys = (boolean) => this.set({hotKeys: boolean, edit: false})
     setEdit = (boolean) => this.set({edit: boolean, hotKeys: false})
     setCode = (text) => this.set({youtubeVideoCode: text})
+    setSearch = (text) => this.set({search: text})
 
 }
