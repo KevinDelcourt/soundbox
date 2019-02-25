@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Modal, ModalHeader, ModalBody  } from 'reactstrap';
-
 export default class SoundBoxModal extends Component {
     render = () =>
         <Modal 

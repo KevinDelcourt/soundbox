@@ -34,7 +34,7 @@ export default class NameInput extends React.Component {
                     </FormGroup>
                 </Col>
                 <Col sm="7" >
-                    <PlayButton onClick={()=>this.props.play(this.props.file.src)}>{this.props.value}</PlayButton>
+                    <PlayButton src={this.props.file.src} >{this.props.value}</PlayButton>
                 </Col>
             </Row>
         </CardBody>

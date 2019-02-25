@@ -8,7 +8,6 @@ export default class DeleteSoundButton extends Component {
         <ModalButton
             color="danger"
             title="Delete this sound."
-            setModal={this.props.setModal}
             modal={{
                 title: "Please confirm deletion of "+ this.props.sound.name,
                 content: <DeleteSoundForm sound={this.props.sound}/>

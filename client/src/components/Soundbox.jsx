@@ -6,6 +6,7 @@ import Navigation from './soundbox/Navigation';
 import AudioPlayer from './soundbox/AudioPlayer';
 import SoundboxState from '../modules/soundbox_state';
 import Menu from './soundbox/Menu';
+import Context from '../context'
 
 export default class Soundbox extends Component {
 
@@ -50,7 +51,7 @@ export default class Soundbox extends Component {
 
     setModal = (modal) => this.setState({modal: modal})
     setPage = (page) => this.setState({page: page},()=>this.componentDidMount()) 
-    setSb = (sb) => this.setState({sb: sb})
+    setSb = (obj) => this.setState({sb: obj})
 
     toggleModal = () => {
         let newModal = this.state.modal
@@ -64,7 +65,7 @@ export default class Soundbox extends Component {
     }
     
     render = () => 
-        <div>            
+        <Context.Provider value={{setModal: this.setModal, play: this.play}}>            
             <SoundBoxModal 
                 modal={this.state.modal} 
                 toggleModal={this.toggleModal} 
@@ -81,18 +82,14 @@ export default class Soundbox extends Component {
             <Menu 
                 sb={this.state.sb}
                 setSb={this.setSb}
-                setModal={this.setModal}
-                play={this.play}
                 />
 
             <PlayButtonArray 
                 audios={this.state.audios}
                 edit={this.state.sb.edit} 
                 showHotkeys={this.state.sb.hotKeys} 
-                play={this.play} 
-                setModal={this.setModal}
                 />
             
             <Navigation page={this.state.page} setPage={this.setPage} />
-        </div>
+        </Context.Provider>
 }

@@ -8,7 +8,6 @@ export default class EditNameButton extends Component {
         <ModalButton
             color="secondary"
             title="Edit the name of this sound."
-            setModal={this.props.setModal}
             modal={{
                 title: "Edit the name of "+ this.props.sound.name,
                 content: <EditNameForm sound={this.props.sound} play={this.props.play}/>

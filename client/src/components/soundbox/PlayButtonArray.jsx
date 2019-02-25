@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Container, Row, Col, Alert } from 'reactstrap'
 import PlayButtonGroup from '../controls/PlayButtonGroup';
 
+
 export default class PlayButtonArray extends Component {
 
     render = () => 
@@ -13,9 +14,7 @@ export default class PlayButtonArray extends Component {
                         edit={this.props.edit} 
                         showHotkeys={this.props.showHotkeys} 
                         index={index} 
-                        play={this.props.play} 
                         sound={a} 
-                        setModal={this.props.setModal}
                         />
                 </Col>
             ):<Alert color="warning">No sounds loaded</Alert>}

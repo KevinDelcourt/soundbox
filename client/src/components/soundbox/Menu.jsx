@@ -42,7 +42,7 @@ export default class Menu extends Component {
                         <LoopButton setLoop={this.setLoop} loop={this.props.sb.loop} />
                         <ShuffleButton setShuffle={this.setShuffle} shuffle={this.props.sb.shuffle} />
                         <HotkeyButton setShowHotkeys={this.setHotKeys} showHotkeys={this.props.sb.hotKeys} />
-                        <YoutubeInputButton youtubeVideoCode={this.props.sb.youtubeVideoCode} setCode={this.setCode} setModal={this.props.setModal}/>
+                        <YoutubeInputButton youtubeVideoCode={this.props.sb.youtubeVideoCode} setCode={this.setCode} />
                     </ButtonGroup>           
                 }
                 <ShowEditButton edit={this.props.sb.edit} setEdit={this.setEdit} />
