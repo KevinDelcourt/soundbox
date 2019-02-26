@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FormGroup, FormText, Input, Button, Form } from 'reactstrap';
-import { editPlaylist } from '../../../modules/axios_functions'
+import { editPlaylist, getPlaylistName } from '../../../modules/axios_functions'
 import Context from '../../../context'
 export default class PlaylistInput extends Component {
     static contextType = Context
@@ -13,6 +13,11 @@ export default class PlaylistInput extends Component {
         text: ""
     }
 
+    componentDidMount = () => {
+        getPlaylistName(this.context.sb.idPlaylist).then((response)=>{
+            this.setName(response.data.name)
+        }).catch((error)=>console.log(error))
+    }
     setName = (newValue) => 
         this.setState({invalid: newValue.length > 11},()=>{
             if(!this.state.invalid)
@@ -61,7 +66,7 @@ export default class PlaylistInput extends Component {
             <Input type="password" placeholder="password" value={this.state.password} onChange={(evt)=>this.setState({password: evt.target.value})}/>
         </FormGroup>
         <Button color="primary" size="lg">Save Playlist</Button>
-        <Button color="danger" size="lg" onClick={()=>this.context.setSb({editPlaylist: false},this.context.reload)}>Cancel changes</Button>
+        <Button className="ml-2" color="danger" size="lg" onClick={()=>this.context.setSb({editPlaylist: false},this.context.reload)}>Cancel changes</Button>
         <FormText color={this.state.color}>{this.state.text}</FormText>
     </Form>
             

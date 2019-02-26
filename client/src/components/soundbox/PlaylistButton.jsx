@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Button} from 'reactstrap'
 import Context from '../../context'
+import Ellipsis from '../utilities/Ellipsis';
 
 export default class PlaylistButton extends Component{
     static contextType = Context
@@ -18,12 +19,12 @@ export default class PlaylistButton extends Component{
         <Button 
             block
             title={this.context.sb.idPlaylist === this.props.playlist.id?"Unload this playlist":"Load this playlist"}
-            color={this.context.sb.idPlaylist === this.props.playlist.id?"warning":"success"}
+            color={this.context.sb.idPlaylist === this.props.playlist.id?"info":"success"}
             size='lg' 
             onClick={()=>this.setPlaylist(this.props.playlist.id)}
             style={{height: "100%",opacity: "0.9"}}
             >
-                {this.props.playlist.name}
+                <Ellipsis>{this.props.playlist.name}</Ellipsis>
                 {this.context.sb.hotKeys?<small> {this.indexToChar(this.props.index)}</small>:""}        
         </Button>
 }

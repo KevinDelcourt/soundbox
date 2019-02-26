@@ -19,6 +19,7 @@ export default class AddPlaylistForm extends Component {
             setPassword={(password)=>this.setState({password: password})}
             >
             <Input 
+                className="mb-2"
                 type="text"
                 value={this.state.name}
                 onChange={(evt)=>this.setName(evt.target.value)}

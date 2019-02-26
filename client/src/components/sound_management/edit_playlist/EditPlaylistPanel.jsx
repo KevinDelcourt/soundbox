@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
-import { Row, Col , Container} from 'reactstrap'
-import {  getPlaylistSounds } from '../../../modules/axios_functions';
+import { Row, Col , Container, ButtonGroup, Alert} from 'reactstrap'
+import { getPlaylistSounds } from '../../../modules/axios_functions';
 import Context from '../../../context'
 import Navigation from '../../soundbox/Navigation';
 import PlayButton from '../../controls/PlayButton';
 import Grid from '../../utilities/Grid';
-import PlaylistButtonGroup from './PlaylistButtonGroup';
 import PlaylistInput from './PlaylistInput';
+import AddRemoveSoundButton from './AddRemoveSoundButton';
 
 class EditCol extends Component {
     render = () =>
@@ -19,7 +19,8 @@ export default class EditPlaylistPanel extends Component {
     static contextType = Context
 
     state={
-        playlistAudios: []
+        playlistAudios: [],
+        showAlert: false
     }
 
     componentDidMount = () => {
@@ -41,9 +42,13 @@ export default class EditPlaylistPanel extends Component {
                 if(this.state.playlistAudios[i].id === sound.id)
                     this.state.playlistAudios.splice(i,1)
         }else{
-            this.state.playlistAudios.push(sound)
-            this.state.playlistAudios.sort(this.compare)
-        }
+            if(this.state.playlistAudios.length < 26){
+                this.state.playlistAudios.push(sound)
+                this.state.playlistAudios.sort(this.compare)
+            }else
+                this.setState({showAlert: true})
+        } 
+            
         
         this.context.reload()
     }
@@ -60,18 +65,33 @@ export default class EditPlaylistPanel extends Component {
 
     mapAudios = (a,index) => 
         <EditCol key={index}>
-            <PlaylistButtonGroup index={index} sound={a} isInPlaylist={this.isInPlaylist} toggleSound={this.toggleSound}/>
+            <ButtonGroup size='lg' style={{height: "100%", width: "100%"}}>
+                <PlayButton 
+                    index={index}
+                    src={a.src}
+                    >
+                    {a.name}
+                </PlayButton>
+                <AddRemoveSoundButton isInPlaylist={this.isInPlaylist} toggleSound={this.toggleSound} sound={a}/>
+            </ButtonGroup>
         </EditCol>
 
     map = (a,index) => 
         <EditCol key={index}>
-            <PlayButton index={index} src={a.src}>
-            {a.name}
-            </PlayButton>
+            <ButtonGroup size='lg' style={{height: "100%", width: "100%"}}>
+                <AddRemoveSoundButton isInPlaylist={this.isInPlaylist} toggleSound={this.toggleSound} sound={a}/>
+                <PlayButton 
+                    index={index}
+                    src={a.src}
+                    >
+                    {a.name}
+                </PlayButton>
+            </ButtonGroup>
         </EditCol>
 
     render = () =>
     <Container>
+        <Alert className="mt-2" color="info" isOpen={this.state.showAlert} toggle={()=>this.setState({showAlert: false})}>Error: you can't have more than 26 sounds in a playlist.</Alert>
         <Row>
             <Col sm="6">
                 <Grid items={this.props.audios} map={this.mapAudios}><Navigation /></Grid>

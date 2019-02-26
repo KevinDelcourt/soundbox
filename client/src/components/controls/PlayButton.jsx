@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Button} from 'reactstrap'
 import Context from '../../context'
+import Ellipsis from '../utilities/Ellipsis';
 
 export default class PlayButton extends Component{
     static contextType = Context
@@ -15,7 +16,8 @@ export default class PlayButton extends Component{
             onClick={()=>this.context.play(this.props.src)}
             style={{height: "100%",opacity: "0.9"}}
             >
-                {this.props.children}
+                <Ellipsis>{this.props.children}</Ellipsis> 
+                
                 {this.context.sb.hotKeys?<small> {this.indexToChar(this.props.index)}</small>:""}        
         </Button>
 }

@@ -23,6 +23,8 @@ export const getPlaylists = () => axios.get(getBaseUrl() + 'get_playlists.php')
 
 export const getPlaylistSounds = (id) => axios.get(getBaseUrl() + 'get_playlist_sounds.php',{params:{id: id}})
 
+export const getPlaylistName = (id) => axios.get(getBaseUrl() + 'get_playlist_name.php',{params:{id: id}})
+
 export const editPlaylist = (jsonData) => axios.post(getBaseUrl()+ "edit_playlist.php",jsonData)
 
 export const addPlaylist = (jsonData) => axios.post(getBaseUrl()+ "add_playlist.php",jsonData)
