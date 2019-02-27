@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Input } from 'reactstrap'
 import { addPlaylist } from '../../../modules/axios_functions';
 import BasicForm from '../../utilities/form/BasicForm';
+import ControlledInput from '../../utilities/form/ControlledInput';
 
 export default class AddPlaylistForm extends Component {
     state={
@@ -18,11 +18,10 @@ export default class AddPlaylistForm extends Component {
             password={this.state.password}
             setPassword={(password)=>this.setState({password: password})}
             >
-            <Input 
-                className="mb-2"
-                type="text"
+            <ControlledInput 
+                placeholder="Playlist name"
                 value={this.state.name}
-                onChange={(evt)=>this.setName(evt.target.value)}
+                setValue={this.setName}
                 />
         </BasicForm>
 

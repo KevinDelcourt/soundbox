@@ -6,7 +6,7 @@ export default class MenuBar extends Component {
 
     toggle = () => this.setState({isOpen: !this.state.isOpen})
 
-    render = () => <Navbar color="dark" light expand="md">
+    render = () => <Navbar color="dark" light expand="lg">
         <NavbarBrand className="m-1">
             {this.props.brand}
         </NavbarBrand>

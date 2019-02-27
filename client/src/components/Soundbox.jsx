@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { getSounds, getPlaylists, getPlaylistSounds } from '../modules/axios_functions';
 import SoundBoxModal from './soundbox/SoundBoxModal';
-import PlayButtonArray from './soundbox/PlayButtonArray';
+import PlayButtonArray from './playlist/PlayButtonArray';
 import AudioPlayer from './soundbox/AudioPlayer';
 import SoundboxState from '../modules/soundbox_state';
 import Menu from './soundbox/Menu';
 import Context from '../context'
 import Youtube from './youtube/Youtube';
-import PlaylistArray from './soundbox/PlaylistArray';
+import PlaylistArray from './playlist/PlaylistArray';
 import EditPlaylistPanel from './sound_management/edit_playlist/EditPlaylistPanel';
 
 export default class Soundbox extends Component {

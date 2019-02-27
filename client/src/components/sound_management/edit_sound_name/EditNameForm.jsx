@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import NameInput from '../../utilities/form/NameInput';
+import NameInput from '../../utilities/form/SoundNameInput';
 import { updateSoundName } from '../../../modules/axios_functions';
 import BasicForm from '../../utilities/form/BasicForm';
 

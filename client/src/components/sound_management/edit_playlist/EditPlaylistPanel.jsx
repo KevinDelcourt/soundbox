@@ -5,7 +5,7 @@ import Context from '../../../context'
 import Navigation from '../../soundbox/Navigation';
 import PlayButton from '../../controls/PlayButton';
 import Grid from '../../utilities/Grid';
-import PlaylistInput from './PlaylistInput';
+import EditPlaylistForm from './EditPlaylistForm';
 import AddRemoveSoundButton from './AddRemoveSoundButton';
 
 class EditCol extends Component {
@@ -98,7 +98,7 @@ export default class EditPlaylistPanel extends Component {
             </Col>
             <Col sm="6">
                 <Grid items={this.state.playlistAudios} map={this.map} >
-                    <PlaylistInput audios={this.state.playlistAudios} idPlaylist={this.props.idPlaylist}/>
+                    <EditPlaylistForm audios={this.state.playlistAudios} idPlaylist={this.props.idPlaylist} />
                 </Grid>
             </Col>
         </Row>

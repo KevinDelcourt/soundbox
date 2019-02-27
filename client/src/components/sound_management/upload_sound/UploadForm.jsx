@@ -1,6 +1,6 @@
 import React from 'react'
 import { FormGroup, Input, FormText, FormFeedback } from 'reactstrap'
-import NameInput from '../../utilities/form/NameInput'
+import NameInput from '../../utilities/form/SoundNameInput'
 import { uploadSounds }  from '../../../modules/axios_functions'
 import BasicForm from '../../utilities/form/BasicForm'
 export default class UploadForm extends React.Component {

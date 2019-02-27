@@ -25,9 +25,9 @@ export default class BasicForm extends Component {
         <Form onSubmit={this.onSubmit}>
             {this.props.children}
             <FormGroup>
-                <Input type="password" placeholder="password" value={this.props.password} onChange={(evt)=>this.props.setPassword(evt.target.value)}/>
+                <Input type="password" placeholder="Password" value={this.props.password} onChange={(evt)=>this.props.setPassword(evt.target.value)}/>
             </FormGroup>
-            <Button color={this.props.button.color}>{this.props.button.text}</Button>
+            <Button color={this.props.button.color}>{this.props.button.text}</Button>{this.props.otherButton}
             <FormText color={this.state.color}>{this.state.text}</FormText>
         </Form>
 

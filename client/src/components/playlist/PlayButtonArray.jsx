@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Col } from 'reactstrap'
 import PlayButtonGroup from '../controls/PlayButtonGroup';
-import Navigation from './Navigation';
+import Navigation from '../soundbox/Navigation';
 import Grid from '../utilities/Grid';
 
 export default class PlayButtonArray extends Component {

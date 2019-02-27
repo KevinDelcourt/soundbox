@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Col } from 'reactstrap'
-import ChoosePlaylistButtonGroup from '../playlist/ChoosePlaylistButtonGroup';
+import ChoosePlaylistButtonGroup from './ChoosePlaylistButtonGroup';
 import Grid from '../utilities/Grid';
 
 export default class PlaylistArray extends Component {
