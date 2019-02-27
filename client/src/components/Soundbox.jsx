@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { getSounds, getPlaylists, getPlaylistSounds } from '../modules/axios_functions';
 import SoundBoxModal from './soundbox/SoundBoxModal';
-import PlayButtonArray from './playlist/PlayButtonArray';
+import PlayButtonArray from './controls/PlayButtonArray';
 import AudioPlayer from './soundbox/AudioPlayer';
 import SoundboxState from '../modules/soundbox_state';
 import Menu from './soundbox/Menu';

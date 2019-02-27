@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Col } from 'reactstrap'
-import PlayButtonGroup from '../controls/PlayButtonGroup';
+import PlayButtonGroup from './PlayButtonGroup';
 import Navigation from '../soundbox/Navigation';
 import Grid from '../utilities/Grid';
 
