@@ -28,17 +28,20 @@ export default class Soundbox extends Component {
     componentWillMount = () => document.addEventListener('keydown', this.handleKeyDown)
 
     componentDidMount = () => {
-        if(this.state.sb.idPlaylist !== -1 && !this.state.sb.editPlaylist)
-            getPlaylistSounds(this.state.sb.idPlaylist).then((response)=>{
-                this.setState({audios: response.data})
+        this.setSb({loading: true},()=>{
+            if(this.state.sb.idPlaylist !== -1 && !this.state.sb.editPlaylist)
+                getPlaylistSounds(this.state.sb.idPlaylist).then((response)=>{
+                    this.setState({audios: response.data},()=>this.setSb({loading:false}))
+                }).catch((error)=>console.log(error))
+            else
+                getSounds(this.state.sb.page,this.state.sb.search).then((response) => {
+                    this.setState({audios: response.data},()=>this.setSb({loading:false}))
+                }).catch((error)=>console.log(error))
+            getPlaylists().then((response)=>{
+                this.setState({playlists: response.data})
             }).catch((error)=>console.log(error))
-        else
-            getSounds(this.state.sb.page,this.state.sb.search).then((response) => {
-                this.setState({audios: response.data})
-            }).catch((error)=>console.log(error))
-        getPlaylists().then((response)=>{
-            this.setState({playlists: response.data})
-        }).catch((error)=>console.log(error))
+        })
+        
     }
 
     play = (src) => this.setState({ src: src }, () => {

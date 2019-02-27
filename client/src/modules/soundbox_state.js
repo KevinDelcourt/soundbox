@@ -12,7 +12,8 @@ const defaultState = {
     page:0,
     choosePlaylist: false,
     idPlaylist: -1,
-    editPlaylist: false
+    editPlaylist: false,
+    loading: false
 }
 
 export default class SoundboxState extends AppState {
@@ -21,14 +22,5 @@ export default class SoundboxState extends AppState {
     }
 
     set = (json) => new SoundboxState(json,this)
-
-    setLoop = (boolean) => this.set({loop: boolean, shuffle: false})
-    setShuffle = (boolean) => this.set({shuffle: boolean, loop: false})
-    setVolume = (value) => this.set({volume: value})
-    setSpeed = (value) => this.set({speed: value})
-    setHotKeys = (boolean) => this.set({hotKeys: boolean, edit: false})
-    setEdit = (boolean) => this.set({edit: boolean, hotKeys: false})
-    setCode = (text) => this.set({youtubeVideoCode: text})
-    setSearch = (text) => this.set({search: text})
 
 }

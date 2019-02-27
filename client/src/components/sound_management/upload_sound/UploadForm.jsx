@@ -3,7 +3,6 @@ import { FormGroup, Input, FormText, FormFeedback } from 'reactstrap'
 import NameInput from '../../utilities/form/NameInput'
 import { uploadSounds }  from '../../../modules/axios_functions'
 import BasicForm from '../../utilities/form/BasicForm'
-
 export default class UploadForm extends React.Component {
 
     state = {
@@ -43,7 +42,7 @@ export default class UploadForm extends React.Component {
         formData.append('password',this.state.password)
         this.state.files.map((f,index)=>formData.append('file['+index+']',f.obj))
         this.state.names.map((n,index)=>formData.append('name['+index+']',n))
-
+        
         return formData
     }
     reset = () => this.setState({files: [], names: []})

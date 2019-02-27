@@ -6,6 +6,8 @@ export default class Ellipsis extends Component{
     static contextType = Context
 
     getMaxLength = () => {
+        if(this.props.noEllipsis)
+            return 11
         if(this.context.sb.edit)
             return 6
         if(this.context.sb.editPlaylist)

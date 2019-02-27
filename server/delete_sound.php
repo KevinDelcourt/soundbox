@@ -18,6 +18,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $req->bindParam(":id",$data["id"]);
         $req->execute();
         
-        echo "operation done: ".$pdo->errorInfo()[0];
+        echo "done: ".$pdo->errorInfo()[0];
     }
 }

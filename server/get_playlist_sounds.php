@@ -1,6 +1,9 @@
 <?php
 require('api_functions.php');
 
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+
 $id = intval($_GET['id']);
 
 $stmt = $pdo->query("SELECT sounds.file, sounds.name, sounds.id 
@@ -17,6 +20,4 @@ while ($row = $stmt->fetch(PDO::FETCH_BOUND)) {
     $rows[] = array('src' => "data:audio/mp3;base64,".base64_encode($file), 'name' => $name, 'id' => $id);
 }
 
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
 echo json_encode($rows);

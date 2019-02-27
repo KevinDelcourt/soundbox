@@ -16,7 +16,7 @@ export default class PlayButton extends Component{
             onClick={()=>this.context.play(this.props.src)}
             style={{height: "100%",opacity: "0.9"}}
             >
-                <Ellipsis>{this.props.children}</Ellipsis> 
+                <Ellipsis noEllipsis={this.props.noEllipsis}>{this.props.children}</Ellipsis> 
                 
                 {this.context.sb.hotKeys?<small> {this.indexToChar(this.props.index)}</small>:""}        
         </Button>

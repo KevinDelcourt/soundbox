@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     if($check !== "ok")
         echo $check;
     else
-        if(empty($data["name"]) || empty($data["id"]))
+        if(empty($data["name"]) || empty($data["id"]) || strlen($data["name"]) > 11)
             echo ('error: bad request '.$data["name"].' - '.$data["id"]);
         else{
             $req = $pdo->prepare("UPDATE sounds SET name=:name WHERE id=:id");
@@ -20,6 +20,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $req->bindParam(":id",$data["id"]);
             $req->execute();
 
-            echo "Operation done: ".$pdo->errorInfo()[0];
+            echo "done: ".$pdo->errorInfo()[0];
         }
 }

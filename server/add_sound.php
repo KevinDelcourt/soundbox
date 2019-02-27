@@ -16,9 +16,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 $error === 0 && 
                 $_POST['name'][$key] !== '' && 
                 strlen($_POST['name'][$key]) < 12 &&
-                $_FILES['file']['type'][$key] === 'audio/mp3' &&
+                ($_FILES['file']['type'][$key] === 'audio/mp3' || $_FILES['file']['type'][$key] === 'audio/mpeg') &&
                 $_FILES['file']['size'][$key] < 16000000
             )
+            
             $validatedEntries[] = $key;
         }
         if(count($validatedEntries) === 0)
@@ -34,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 $pdo->exec("INSERT INTO sounds (file,name) VALUES ('{$audio}',{$pdo->quote($_POST['name'][$key])})");
                 $returnCode .= $pdo->errorInfo()[0]." ";
             }
-            echo "upload done: ".$returnCode;
+            echo "done: ".$returnCode;
         }
     }
 }
