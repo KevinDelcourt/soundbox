@@ -10,7 +10,7 @@
 db_connect.php
 # production
 /client/build
-
+scripts.txt
 # misc
 .DS_Store
 .env.local
