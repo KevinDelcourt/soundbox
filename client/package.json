@@ -1,6 +1,6 @@
 {
-  "name": "client",
-  "version": "0.1.0",
+  "name": "soundbox",
+  "version": "2.2.0",
   "private": true,
   "homepage": "http://soundbox.kevin-delcourt.net/",
   "dependencies": {
