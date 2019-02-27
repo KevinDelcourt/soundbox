@@ -11,6 +11,7 @@ db_connect.php
 # production
 /client/build
 scripts.txt
+7och.code-workspace
 # misc
 .DS_Store
 .env.local
