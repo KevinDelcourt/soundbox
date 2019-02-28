@@ -38,7 +38,7 @@ export default class Navigation extends React.Component {
                     {i+1}
                 </Button>
             )
-        if(i===1 || i === this.context.sb.page.length - 2)
+        if(i===1 || i === this.state.page.length - 2)
             return(<Button color="dark" disabled>...</Button>)
         
         return("")
