@@ -10,6 +10,7 @@
     "react": "^16.8.2",
     "react-audio-player": "^0.11.0",
     "react-audio-spectrum": "^0.0.9",
+    "react-audio-visualizer": "^1.0.3",
     "react-dom": "^16.8.2",
     "react-ellipsis-text": "^1.1.0",
     "react-scripts": "2.1.5",

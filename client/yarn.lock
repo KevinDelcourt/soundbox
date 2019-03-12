@@ -2232,7 +2232,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.3:
+classnames@^2.1.2, classnames@^2.2.3:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
@@ -8029,6 +8029,13 @@ react-audio-spectrum@^0.0.9:
     prop-types "^15.6.0"
     react "^16.1.0"
     react-dom "^16.1.0"
+
+react-audio-visualizer@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-audio-visualizer/-/react-audio-visualizer-1.0.3.tgz#497f3be59a7302a2e138279f3e5e4bb2e6f78579"
+  integrity sha1-SX875ZpzAqLhOCefPl5Lsub3hXk=
+  dependencies:
+    classnames "^2.1.2"
 
 react-dev-utils@^7.0.3:
   version "7.0.3"

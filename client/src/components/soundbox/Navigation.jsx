@@ -39,7 +39,7 @@ export default class Navigation extends React.Component {
                 </Button>
             )
         if(i===1 || i === this.state.page.length - 2)
-            return(<Button color="dark" disabled>...</Button>)
+            return(<Button color="dark" key={i} disabled>...</Button>)
         
         return("")
     }
