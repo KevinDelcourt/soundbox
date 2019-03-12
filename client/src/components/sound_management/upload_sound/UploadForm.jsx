@@ -47,7 +47,6 @@ export default class UploadForm extends React.Component {
     }
     reset = () => this.setState({files: [], names: []})
     
-
     render = () => 
         <BasicForm
             button={{color: "success", text: "Upload files"}}
