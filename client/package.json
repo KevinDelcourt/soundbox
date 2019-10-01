@@ -13,6 +13,7 @@
     "react-audio-visualizer": "^1.0.3",
     "react-dom": "^16.8.2",
     "react-ellipsis-text": "^1.1.0",
+    "react-hot-loader": "^4.12.14",
     "react-scripts": "2.1.5",
     "react-transition-group": "^1.2.1",
     "reactstrap": "^7.1.0"
